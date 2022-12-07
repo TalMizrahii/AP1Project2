@@ -19,7 +19,9 @@ using namespace std;
 class FileReader {
 public:
     FileReader();
+
     ~FileReader();
+
     vector<vector<double>> readFile(string &path);
 
 

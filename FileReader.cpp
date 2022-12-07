@@ -11,15 +11,15 @@ FileReader::FileReader() = default;
 
 vector<vector<double>> FileReader::readFile(string &path) {
     ifstream myFile;
-    try{
+    try {
         // trying to open the file using the path.
         myFile.open(path);
         if (!myFile.is_open()) {
             throw;
         }
     }
-    // Catching an error.
-    catch (...){
+        // Catching an error.
+    catch (...) {
         cout << " NO FILE" << endl;
         exit(-1);
     }

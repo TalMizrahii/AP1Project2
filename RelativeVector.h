@@ -11,20 +11,27 @@
 
 using namespace std;
 
-class RelativeVector{
+class RelativeVector {
 
 public:
     explicit RelativeVector(vector<double> initValuesVector);
+
     ~RelativeVector();
 
     void setValuesVector(vector<double> newValuesVector);
+
     void setClassification(string newClassification);
+
     void setDistanceFromRelativeVec(double newDistanceFromRelativeVec);
+
     void setPosition(int newPosition);
 
     vector<double> getValuesVector();
+
     string getClassification();
+
     double getDistanceFromRelativeVec();
+
     int getPosition();
 
 private:
