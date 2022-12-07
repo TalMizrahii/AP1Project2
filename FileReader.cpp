@@ -20,7 +20,6 @@ vector<vector<int>> FileReader::readFile(string &path) {
 //    myFile.open(path);
     string line = "";
     while (getline(myFile, line)) {
-
     }
 }
 
