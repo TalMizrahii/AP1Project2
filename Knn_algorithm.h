@@ -1,0 +1,8 @@
+//
+// Created by yuval on 12/7/22.
+//
+
+#ifndef AP1PROJECT2_KNN_ALGORITHM_H
+#define AP1PROJECT2_KNN_ALGORITHM_H
+
+#endif //AP1PROJECT2_KNN_ALGORITHM_H
