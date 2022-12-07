@@ -23,6 +23,7 @@ public:
     ~FileReader();
 
     vector<vector<double>> readFile(string &path);
+    string isDot(string toNum);
 
 
 };

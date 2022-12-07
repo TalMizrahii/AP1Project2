@@ -10,7 +10,7 @@ using namespace std;
 FileReader::FileReader() = default;
 
 vector<vector<double>> FileReader::readFile(string &path) {
-    ifstream myFile;
+    fstream myFile;
     try {
         // trying to open the file using the path.
         myFile.open(path);
@@ -30,13 +30,15 @@ vector<vector<double>> FileReader::readFile(string &path) {
     while (myFile.good()) {
         // Create a new vector.
         vector<double> dataVec;
+        // Read as a string.
+        string toNum;
         // Read each data segment.
-        for (int i = 0; i < SIZE; ++i) {
-            // Read as a string.
-            string toNum;
-            // Put the data inside num.
-            getline(myFile, toNum, ',');
-            // Cast to double and put int the vector.
+        while (getline(myFile, toNum, ',')) {
+            toNum = isDot(toNum);
+            if (!isdigit(toNum[0])) {
+                cout << toNum << endl;
+                break;
+            }
             dataVec.push_back(stod(toNum));
         }
         // When finished with the line, put the vector in the all vector's vector.
@@ -46,9 +48,20 @@ vector<vector<double>> FileReader::readFile(string &path) {
     // Delete!!!!!!!!!!!! test only.
     for (int i = 0; i < fileVec.size(); ++i) {
         for (int j = 0; j < fileVec[i].size(); ++j) {
-            cout << fileVec[i][j] << endl;
+            cout << fileVec[i][j] << " ";
         }
+
+        cout << "\n-----------------\n" << endl;
     }
+
+    cout << fileVec.size() << endl;
+
+}
+
+string FileReader::isDot(string toNum) {
+    if (toNum[0] == '.')
+        return '0' + toNum;
+    return toNum;
 }
 
 FileReader::~FileReader() = default;
