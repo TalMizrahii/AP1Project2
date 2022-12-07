@@ -23,7 +23,10 @@ public:
     ~FileReader();
 
     vector<vector<double>> readFile(string &path);
+
     string isDot(string toNum);
+
+    void splitBackSlash(string &name, string &nextCube, string toNum1);
 
 
 };

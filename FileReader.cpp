@@ -23,7 +23,6 @@ vector<vector<double>> FileReader::readFile(string &path) {
         cout << " NO FILE" << endl;
         exit(-1);
     }
-
     // Declaring a vector of vectors.
     vector<vector<double>> fileVec;
     // While the file is still ok to read:
@@ -36,6 +35,7 @@ vector<vector<double>> FileReader::readFile(string &path) {
         while (getline(myFile, toNum, ',')) {
             toNum = isDot(toNum);
             if (!isdigit(toNum[0])) {
+
                 cout << toNum << endl;
                 break;
             }
@@ -62,6 +62,21 @@ string FileReader::isDot(string toNum) {
     if (toNum[0] == '.')
         return '0' + toNum;
     return toNum;
+}
+
+void FileReader::splitBackSlash(string &name, string &nextCube, string toNum1) {
+    string newName, newNext;
+    for (int i = 0; i < toNum1.size(); i++) {
+        if (toNum1[i] == '\n') {
+            for(int j = i + 1;j < toNum1.size(); j++){
+                newNext += toNum1[j];
+            }
+            break;
+        }
+        newName += toNum1[i];
+    }
+    name = std::move(newName);
+    nextCube = std:: move(newNext);
 }
 
 FileReader::~FileReader() = default;
