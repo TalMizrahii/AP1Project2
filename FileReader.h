@@ -20,7 +20,7 @@ class FileReader {
 public:
     FileReader();
     ~FileReader();
-    vector<vector<int>> readFile(string &path);
+    vector<vector<double>> readFile(string &path);
 
 
 };

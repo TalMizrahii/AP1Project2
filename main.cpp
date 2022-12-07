@@ -142,8 +142,8 @@ void size_Comparison(const vector<double> &v1, const vector<double> &v2) {
 int main() {
 
     FileReader fileReader;
-
-    fileReader.readFile("/home/tal/Desktop/AP1/AP1Ex2/datasets/wine/wine_Classified.csv");
+    string path = "/home/tal/Desktop/AP1/AP1Ex2/datasets/wine/wine_Classified.csv";
+    fileReader.readFile(path);
 
 
 

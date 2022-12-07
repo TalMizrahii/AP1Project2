@@ -7,11 +7,9 @@
 #define SIZE 13
 using namespace std;
 
-FileReader::FileReader() {
+FileReader::FileReader() = default;
 
-}
-
-vector<vector<int>> FileReader::readFile(string &path) {
+vector<vector<double>> FileReader::readFile(string &path) {
     ifstream myFile;
     try{
         // trying to open the file using the path.
