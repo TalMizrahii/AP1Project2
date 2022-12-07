@@ -4,6 +4,7 @@
 #include <sstream>
 #include "Distances.h"
 #include <cstdlib>
+#include "FileReader.h"
 
 using namespace std;
 
@@ -139,14 +140,21 @@ void size_Comparison(const vector<double> &v1, const vector<double> &v2) {
  * @return return 0 if the program run without issues.
  */
 int main() {
-    // Creating two vectors from the user's inputs.
-    vector<double> vector1 = insert_To_Vector();
-    vector<double> vector2 = insert_To_Vector();
-    // Calling a function that check if the vectors have the same size.
-    size_Comparison(vector1, vector2);
-    // Creating a Distance instance.
-    Distances D;
-    // Printing all distances calculations.
-    D.printAll(vector1, vector2);
-    return 0;
+
+    FileReader fileReader;
+
+    fileReader.readFile("/home/tal/Desktop/AP1/AP1Ex2/datasets/wine/wine_Classified.csv");
+
+
+
+//    // Creating two vectors from the user's inputs.
+//    vector<double> vector1 = insert_To_Vector();
+//    vector<double> vector2 = insert_To_Vector();
+//    // Calling a function that check if the vectors have the same size.
+//    size_Comparison(vector1, vector2);
+//    // Creating a Distance instance.
+//    Distances D;
+//    // Printing all distances calculations.
+//    D.printAll(vector1, vector2);
+//    return 0;
 }
