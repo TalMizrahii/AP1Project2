@@ -1,14 +1,17 @@
-//
-// Created by tal on 12/7/22.
-//
-
 #include "FileReader.h"
 
-#define SIZE 13
 using namespace std;
 
+/**
+ * A default constructor.
+ */
 FileReader::FileReader() = default;
 
+/**
+ * Reading a csv file line by line and returning a vector of RelativeVectors contain all info about the file's lines.
+ * @param path The path to the file.
+ * @return A vector of RelativeVectors contain all info about the file's lines.
+ */
 vector<RelativeVector> FileReader::readFile(string &path) {
     // Create a new stream to read from the file.
     fstream myFile;
@@ -20,7 +23,7 @@ vector<RelativeVector> FileReader::readFile(string &path) {
             throw; // NEED TO BE REPLACED!?
         }
     }
-    // Catching an error.
+        // Catching an error.
     catch (...) {
         cout << " NO FILE" << endl;
         exit(-1); // NEED TO BE REPLACED!?
@@ -35,17 +38,22 @@ vector<RelativeVector> FileReader::readFile(string &path) {
         getline(myFile, fullVector);
         // Send the line to be processed, and receive back a new relative vector who represent the line.
         RelativeVector dataVec = catchDelim(fullVector);
-        // set the new relative vector in the vector of relative vectors.
+        // Set the new relative vector in the vector of relative vectors.
         fileVec.push_back(dataVec);
     }
     // Return the vector of relative vectors.
     return fileVec;
 }
 
-
-RelativeVector FileReader::catchDelim(const string& toNum) {
+/**
+ * A method who catch each cell in the line of a cvs file
+ * and returns a RelativeVector represent the data about the line.
+ * @param fullVector the line from the file as a string.
+ * @return RelativeVectors contain all info about the line.
+ */
+RelativeVector FileReader::catchDelim(const string &fullVector) {
     // Create a new stream to go over the line.
-    istringstream line(toNum);
+    istringstream line(fullVector);
     // Initiate a new data vector.
     vector<double> dataVec;
     // Create a new RelativeVector instance.
@@ -70,6 +78,11 @@ RelativeVector FileReader::catchDelim(const string& toNum) {
     return relativeMember;
 }
 
+/**
+ * A method given a number (as a string) checks the need to concatenate 0 to it.
+ * @param toNum the number as a string.
+ * @return the number concatenated or not.
+ */
 string FileReader::isDot(string toNum) {
     // Check if the first char is a dot.
     if (toNum[0] == '.')
@@ -79,4 +92,7 @@ string FileReader::isDot(string toNum) {
     return toNum;
 }
 
+/**
+ * A default destructor.
+ */
 FileReader::~FileReader() = default;

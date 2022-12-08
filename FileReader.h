@@ -1,7 +1,3 @@
-//
-// Created by tal on 12/7/22.
-//
-
 #ifndef AP1PROJECT2_FILEREADER_H
 #define AP1PROJECT2_FILEREADER_H
 
@@ -13,9 +9,7 @@
 #include <string>
 #include "RelativeVector.h"
 
-
 using namespace std;
-
 
 class FileReader {
 public:
@@ -26,10 +20,9 @@ public:
     vector<RelativeVector> readFile(string &path);
 
 protected:
-    string isDot(string toNum);
+    string isDot(string fullVector);
 
     RelativeVector catchDelim(const string &toNum);
-
 
 };
 
