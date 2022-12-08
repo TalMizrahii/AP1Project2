@@ -2,9 +2,13 @@
 #include <string>
 #include <iostream>
 #include <sstream>
-#include "Distances.h"
 #include <cstdlib>
-#include "FileReader.h"
+#include "flow and data/FileReader.h"
+# include "Distances/Minkowski.h"
+# include "Distances/Euclidean.h"
+# include "Distances/Taxicab.h"
+# include "Distances/Canberra.h"
+# include "Distances/Chebyshev.h"
 
 using namespace std;
 
@@ -141,20 +145,42 @@ void size_Comparison(const vector<double> &v1, const vector<double> &v2) {
  */
 int main() {
 
-    FileReader fileReader;
-    string path = "/home/tal/Desktop/AP1/AP1Ex2/datasets/wine/wine_Classified.csv";
-    fileReader.readFile(path);
+//    FileReader fileReader;
+//    string path = "/home/tal/Desktop/AP1/AP1Ex2/datasets/wine/wine_Classified.csv";
+//    fileReader.readFile(path);
 
 
+/**
+ * FROM HERE BELOW IS A RUN EXAMPLE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+ */
+    // Creating two vectors from the user's inputs.
+    vector<double> vector1 = insert_To_Vector();
+    vector<double> vector2 = insert_To_Vector();
+    // Calling a function that check if the vectors have the same size.
+    size_Comparison(vector1, vector2);
 
-//    // Creating two vectors from the user's inputs.
-//    vector<double> vector1 = insert_To_Vector();
-//    vector<double> vector2 = insert_To_Vector();
-//    // Calling a function that check if the vectors have the same size.
-//    size_Comparison(vector1, vector2);
-//    // Creating a Distance instance.
-//    Distances D;
-//    // Printing all distances calculations.
-//    D.printAll(vector1, vector2);
-//    return 0;
+    Euclidean e;
+    Taxicab t;
+    Chebyshev c;
+    Canberra r;
+    Minkowski m;
+
+//    cout << e.calculateDistance(vector1, vector2) << endl;
+//    cout << t.calculateDistance(vector1, vector2) << endl;
+//    cout << c.calculateDistance(vector1, vector2) << endl;
+//    cout << r.calculateDistance(vector1, vector2) << endl;
+//    cout << m.calculateDistance(vector1, vector2) << endl;
+
+    vector<AbstractDistance *> vecD;
+    vecD.push_back(&e);
+    vecD.push_back(&t);
+    vecD.push_back(&c);
+    vecD.push_back(&r);
+    vecD.push_back(&m);
+
+    for (int i = 0; i < 5; i++) {
+        cout << vecD[i]->calculateDistance(vector1, vector2) << endl;
+    }
+
+    return 0;
 }
