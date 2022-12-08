@@ -9,74 +9,74 @@ using namespace std;
 
 FileReader::FileReader() = default;
 
-vector<vector<double>> FileReader::readFile(string &path) {
+vector<RelativeVector> FileReader::readFile(string &path) {
+    // Create a new stream to read from the file.
     fstream myFile;
     try {
-        // trying to open the file using the path.
+        // Trying to open the file using the path.
         myFile.open(path);
+        // If the file is not open, do not proceed.
         if (!myFile.is_open()) {
-            throw;
+            throw; // NEED TO BE REPLACED!?
         }
     }
-        // Catching an error.
+    // Catching an error.
     catch (...) {
         cout << " NO FILE" << endl;
-        exit(-1);
+        exit(-1); // NEED TO BE REPLACED!?
     }
     // Declaring a vector of vectors.
-    vector<vector<double>> fileVec;
+    vector<RelativeVector> fileVec;
     // While the file is still ok to read:
     while (myFile.good()) {
-        // Create a new vector.
-        vector<double> dataVec;
-        // Read as a string.
-        string toNum;
-        // Read each data segment.
-        while (getline(myFile, toNum, ',')) {
-            toNum = isDot(toNum);
-            if (!isdigit(toNum[0])) {
-
-                cout << toNum << endl;
-                break;
-            }
-            dataVec.push_back(stod(toNum));
-        }
-        // When finished with the line, put the vector in the all vector's vector.
+        // Create a String to read a full line from the file.
+        string fullVector;
+        // Get the line from the file and put it in the fullVector.
+        getline(myFile, fullVector);
+        // Send the line to be processed, and receive back a new relative vector who represent the line.
+        RelativeVector dataVec = catchDelim(fullVector);
+        // set the new relative vector in the vector of relative vectors.
         fileVec.push_back(dataVec);
     }
+    // Return the vector of relative vectors.
+    return fileVec;
+}
 
-    // Delete!!!!!!!!!!!! test only.
-    for (int i = 0; i < fileVec.size(); ++i) {
-        for (int j = 0; j < fileVec[i].size(); ++j) {
-            cout << fileVec[i][j] << " ";
+
+RelativeVector FileReader::catchDelim(const string& toNum) {
+    // Create a new stream to go over the line.
+    istringstream line(toNum);
+    // Initiate a new data vector.
+    vector<double> dataVec;
+    // Create a new RelativeVector instance.
+    RelativeVector relativeMember;
+    // Initiate a string to store the data from toNum.
+    string fromDelim;
+    // Read each data segment seperated by comma.
+    while (getline(line, fromDelim, ',')) {
+        // Check if the first digit of the number exist or not (.23 or 0.23).
+        fromDelim = isDot(fromDelim);
+        // If the data extracted from the line is not a number, it must be the specification.
+        if (!isdigit(fromDelim[0])) {
+            // Set the specification to the RelativeVector and continue.
+            relativeMember.setClassification(fromDelim);
+            continue;
         }
-
-        cout << "\n-----------------\n" << endl;
+        // Set the number into the data vector.
+        dataVec.push_back(stod(fromDelim));
     }
-
-    cout << fileVec.size() << endl;
-
+    // Set the dataVec to the RelativeVector and return it.
+    relativeMember.setValuesVector(dataVec);
+    return relativeMember;
 }
 
 string FileReader::isDot(string toNum) {
+    // Check if the first char is a dot.
     if (toNum[0] == '.')
+        // If so, concatenate 0 to the number.
         return '0' + toNum;
+    // Otherwise just return the number.
     return toNum;
-}
-
-void FileReader::splitBackSlash(string &name, string &nextCube, string toNum1) {
-    string newName, newNext;
-    for (int i = 0; i < toNum1.size(); i++) {
-        if (toNum1[i] == '\n') {
-            for(int j = i + 1;j < toNum1.size(); j++){
-                newNext += toNum1[j];
-            }
-            break;
-        }
-        newName += toNum1[i];
-    }
-    name = std::move(newName);
-    nextCube = std:: move(newNext);
 }
 
 FileReader::~FileReader() = default;

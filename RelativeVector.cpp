@@ -44,6 +44,8 @@ int RelativeVector::getPosition() {
     return this->position;
 }
 
+RelativeVector::RelativeVector() = default;
+
 
 
 

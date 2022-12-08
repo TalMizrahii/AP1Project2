@@ -15,6 +15,7 @@ class RelativeVector {
 
 public:
     explicit RelativeVector(vector<double> initValuesVector);
+     RelativeVector();
 
     ~RelativeVector();
 

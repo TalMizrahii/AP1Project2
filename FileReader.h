@@ -11,6 +11,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include "RelativeVector.h"
 
 
 using namespace std;
@@ -22,11 +23,12 @@ public:
 
     ~FileReader();
 
-    vector<vector<double>> readFile(string &path);
+    vector<RelativeVector> readFile(string &path);
 
+protected:
     string isDot(string toNum);
 
-    void splitBackSlash(string &name, string &nextCube, string toNum1);
+    RelativeVector catchDelim(const string &toNum);
 
 
 };
