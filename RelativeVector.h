@@ -1,7 +1,3 @@
-//
-// Created by tal on 12/7/22.
-//
-
 #ifndef AP1PROJECT2_RELATIVEVECTOR_H
 #define AP1PROJECT2_RELATIVEVECTOR_H
 
@@ -14,8 +10,9 @@ using namespace std;
 class RelativeVector {
 
 public:
-    explicit RelativeVector(vector<double> initValuesVector);
-     RelativeVector();
+    RelativeVector(vector<double> initValuesVector);
+
+    RelativeVector();
 
     ~RelativeVector();
 
@@ -35,12 +32,16 @@ public:
 
     int getPosition();
 
+
+
 private:
     vector<double> valuesVector;
     string classification;
-    double distanceFromRelativeVec = -1;
+    double distanceFromRelativeVec;
     int position = -1;
 };
+
+
 
 #endif //AP1PROJECT2_RELATIVEVECTOR_H
 

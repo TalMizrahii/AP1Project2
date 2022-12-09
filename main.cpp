@@ -203,15 +203,11 @@ int main(int args, char *argv[]) {
     vector<double> vector1 = insert_To_Vector();
 
 
-
-
-
     AbstractDistance *disCalc = distanceCreator(distance_algorithm);
     FileReader fileReader;
-    vector<RelativeVector> catalogedVec = fileReader.readFile(path);
+    vector<RelativeVector*> catalogedVec = fileReader.readFile(path);
     KnnAlgorithm kElement(catalogedVec, vector1, kNeighbors, disCalc);
-
-
+    kElement.classificationUserVec();
 
 
     return 0;

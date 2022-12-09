@@ -17,12 +17,11 @@ public:
 
     ~FileReader();
 
-    vector<RelativeVector> readFile(string &path);
+    vector<RelativeVector*> readFile(string &path);
 
-protected:
     string isDot(string fullVector);
 
-    RelativeVector catchDelim(const string &toNum);
+    RelativeVector* catchDelim(const string &toNum);
 
 };
 
