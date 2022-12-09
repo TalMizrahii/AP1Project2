@@ -178,7 +178,7 @@ int main() {
     vecD.push_back(&r);
     vecD.push_back(&m);
 
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < vecD.size(); i++) {
         cout << vecD[i]->calculateDistance(vector1, vector2) << endl;
     }
 

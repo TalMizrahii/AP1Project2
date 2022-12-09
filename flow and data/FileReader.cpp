@@ -41,6 +41,7 @@ vector<RelativeVector> FileReader::readFile(string &path) {
         // Set the new relative vector in the vector of relative vectors.
         fileVec.push_back(dataVec);
     }
+    myFile.close();
     // Return the vector of relative vectors.
     return fileVec;
 }
