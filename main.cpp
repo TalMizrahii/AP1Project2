@@ -64,6 +64,29 @@ bool validFloatingNumber(string string1, unsigned long &i) {
 }
 
 
+vector<string> extract_argc(char *argcArray[]) {
+    // As we know the argc[0] is the program name, and by the format argc[1] is the k neighbors.
+    string neighbors = argcArray[1];
+    // As we know the argc[0] is the program name, and by the format argc[2] is the file/path.
+    string path = argcArray[2];
+    // As we know the argc[0] is the program name, and by the format argc[3] is the distance_algorithm.
+    string distance_algorithm = argcArray[3];
+    // Checking if the k neighbors is legal.
+    for (char neighbor: neighbors) {
+        if (!isdigit(neighbor) || neighbors[0] == '0') {
+            cout << "Illegal Format." << endl;
+            exit(0);
+        }
+    }
+    // Creating a string vector
+    vector<string> vector;
+    vector.push_back(neighbors);
+    vector.push_back(path);
+    vector.push_back(distance_algorithm);
+    return vector;
+}
+
+
 /**
  * Checking if the user input is in the right format.
  * @param s a string that the user entered.
@@ -116,7 +139,7 @@ vector<double> insert_To_Vector() {
     // Send the string to be checked for validation.
     if (!isNumber(input)) {
         cout << "Illegal format" << endl;
-        exit(0);
+        exit(-1);
     }
     // Creating a vector from the user input string.
     istringstream vectorStream(input);
@@ -135,52 +158,60 @@ void size_Comparison(const vector<double> &v1, const vector<double> &v2) {
     // Checking if the vectors have the same size.
     if (v1.size() != v2.size()) {
         cout << "The vectors are not equally sized." << endl;
-        exit(0);
+        exit(-1);
     }
+}
+
+/**
+ * returning the distance object (on the heap) as the user specified.
+ * @param distanceSpec The user's request.
+ * @return The instance of the distance.
+ */
+AbstractDistance *distanceCreator(string distanceSpec) {
+    // Return the Euclidean distance.
+    if (distanceSpec == "AUC") {
+        auto *euc = new Euclidean();
+        return euc;
+    }
+    // Return the Taxicab distance.
+    if (distanceSpec == "MAN") {
+        auto *man = new Taxicab();
+        return man;
+    }
+    // Return the Chebyshev distance.
+    if (distanceSpec == "CHB"){
+        auto *chb = new Chebyshev();
+        return chb;
+    }
+    // Return the Canberra distance.
+    if (distanceSpec == "CAN"){
+        auto *can = new Canberra();
+        return can;
+    }
+    // Return the Minkowski distance.
+    if (distanceSpec == "MIN"){
+        auto *min = new Minkowski();
+        return min;
+    }
+    // If no valid option was chosen, exit.
+    cout << "Illegal Format" << endl;
+    exit(-1);
 }
 
 /**
  * This is the main function of the program, creating 2 vectors and checking validation.
  * @return return 0 if the program run without issues.
  */
-int main() {
+int main(int args, char *argv[]) {
 
-//    FileReader fileReader;
-//    string path = "/home/tal/Desktop/AP1/AP1Ex2/datasets/wine/wine_Classified.csv";
-//    fileReader.readFile(path);
+    vector<string> argc_vector = extract_argc(argv);
 
+    int k_neighbors = stoi(argc_vector[0]);
+    string path = argc_vector[1];
+    string distance_algorithm = argc_vector[2];
 
-/**
- * FROM HERE BELOW IS A RUN EXAMPLE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
- */
-    // Creating two vectors from the user's inputs.
-    vector<double> vector1 = insert_To_Vector();
-    vector<double> vector2 = insert_To_Vector();
-    // Calling a function that check if the vectors have the same size.
-    size_Comparison(vector1, vector2);
-
-    Euclidean e;
-    Taxicab t;
-    Chebyshev c;
-    Canberra r;
-    Minkowski m;
-
-//    cout << e.calculateDistance(vector1, vector2) << endl;
-//    cout << t.calculateDistance(vector1, vector2) << endl;
-//    cout << c.calculateDistance(vector1, vector2) << endl;
-//    cout << r.calculateDistance(vector1, vector2) << endl;
-//    cout << m.calculateDistance(vector1, vector2) << endl;
-
-    vector<AbstractDistance *> vecD;
-    vecD.push_back(&e);
-    vecD.push_back(&t);
-    vecD.push_back(&c);
-    vecD.push_back(&r);
-    vecD.push_back(&m);
-
-    for (int i = 0; i < vecD.size(); i++) {
-        cout << vecD[i]->calculateDistance(vector1, vector2) << endl;
-    }
+    FileReader fileReader;
+    vector<RelativeVector> catalogedVec = fileReader.readFile(path);
 
     return 0;
 }
