@@ -12,6 +12,7 @@
 #include "AbstractDistance.h"
 #include <bits/stdc++.h>
 #include <utility>
+#include <map>
 
 using namespace std;
 
@@ -21,7 +22,7 @@ public:
     explicit KnnAlgorithm(vector<RelativeVector *> cataloged_vectors, vector<double> user_vector,
                           int k_neighbors, AbstractDistance *calculation);
 
-    // Setter for cataloged_vectors.
+    // Setter for catalogedVectors.
     void setCataloged_vectors(vector<RelativeVector *> cataloged_vectors);
 
     // Setter for userVector.
@@ -30,19 +31,19 @@ public:
     // Setter for Calc.
     void seCalc(AbstractDistance *calculation1);
 
-    // Setter for k_neighbors.
+    // Setter for kNeighbors.
     void setKNeighbors(int k_neighbors);
 
     // Calculate the distances between the userVector to all cataloged vectors(classified vectors).
     void calculateDistances();
 
-    // Getter for k_neighbors.
+    // Getter for kNeighbors.
     int getKNeighbors() const;
 
     // Getter for userVector.
     vector<double> getUserVector();
 
-    // Getter for cataloged_vectors.
+    // Getter for catalogedVectors.
     vector<RelativeVector *> getCatalogedVectors();
 
     // Getter for calc.
@@ -52,10 +53,11 @@ public:
     // Check validation of the vectors.
     void sizeComparison(const vector<double> &v1, const vector<double> &v2);
 
-    // Compares two vectors according to their distance from the userVector.
-//    static bool compareRelativeVector(RelativeVector *i1, RelativeVector *i2);
+    string extractClassification(const map<string, int>&  kMap);
 
     vector<RelativeVector *> sortingAndGettingK();
+
+    map<string, int> createMap(vector<RelativeVector*> knn);
 
     // The Destructor of the class.
     ~KnnAlgorithm();

@@ -136,16 +136,68 @@ vector<RelativeVector *> KnnAlgorithm::sortingAndGettingK() {
     vector<RelativeVector *> kRelativeVectors;
     // Push to it the first k elements.
     for (int i = 0; i < getKNeighbors(); i++) {
-        cout << knn[i]->getDistanceFromRelativeVec() << endl;
         kRelativeVectors.push_back(knn[i]);
     }
     // Return the first k elements.
     return kRelativeVectors;
 }
 
-string KnnAlgorithm::classificationUserVec() {
-    calculateDistances();
-    vector<RelativeVector *> nearestK = sortingAndGettingK();
+/**
+ * Create a map contains the string of classification as a key and the number it appears in knn as a value.
+ * @param knn The k nearest neighbours to the user's vector.
+ * @return A map contains the string of classification as a key and the number it appears in knn as a value.
+ */
+map<string, int> KnnAlgorithm::createMap(vector<RelativeVector *> knn) {
+    // Declare a map.
+    map<string, int> kMap;
+    for (int i = 0; i < knn.size(); i++) {
+        // If the classification is in the map.
+        if (kMap.find(knn[i]->getClassification()) != kMap.end()) {
+            // Add one to the value.
+            kMap[knn[i]->getClassification()] += 1;
+            // If it's not.
+        } else {
+            // add the classification with the value 1.
+            kMap[knn[i]->getClassification()] = 1;
+        }
+    }
+    // Return the map.
+    return kMap;
+}
 
-    return "";
+/**
+ * Check what key has the biggest value, and return it's classification.
+ * @param kMap Tha map of values.
+ * @return the classification the biggest value.
+ */
+string KnnAlgorithm::extractClassification(const map<string, int> &kMap) {
+    // A counter for the biggest classification.
+    int maxClass = 0;
+    // The result classification.
+    string resultClass;
+    // Iterate all keys.
+    for (auto const &keyValue: kMap) {
+        // If the value is larger than the counter, replace them.
+        if (keyValue.second > maxClass) {
+            maxClass = keyValue.second;
+            resultClass = keyValue.first;
+        }
+    }
+    // Return the largest classification.
+    return resultClass;
+}
+
+/**
+ * A control flow function for this class calculations.
+ * @return the largest classification from the KNN vectors.
+ */
+string KnnAlgorithm::classificationUserVec() {
+    // Calculate all distances of vectors from the user's vector.
+    calculateDistances();
+    // Calculate the k nearest neighbors.
+    vector<RelativeVector *> nearestK = sortingAndGettingK();
+    // Create a map from the knn.
+    map<string, int> kMap = createMap(nearestK);
+    // Calculate the largest classification and return it.
+    return extractClassification(kMap);
 }
