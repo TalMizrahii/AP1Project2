@@ -22,6 +22,8 @@ public:
     void setCataloged_vectors(vector<RelativeVector> cataloged_vectors);
     // Setter for user_vector.
     void setUser_vector(vector<double> user_vector);
+    // Setter for Calc.
+    void seCalc(AbstractDistance *calculation1);
     // Setter for k_neighbors.
     void setK_neighbors(int k_neighbors);
     // Calculate the distances between the user_vector to all cataloged vectors(classified vectors).
@@ -32,6 +34,13 @@ public:
     vector<double> getUser_vector();
     // Getter for cataloged_vectors.
     vector<RelativeVector> getCataloged_vectors();
+    // Getter for calc.
+    AbstractDistance* getCalc();
+    // Check validation of the vectors.
+    void size_Comparison(const vector<double> &v1, const vector<double> &v2);
+    // Compares two vectors according to their distance from the user_vector.
+    static bool compareRelativeVector(RelativeVector i1, RelativeVector i2);
+    vector<RelativeVector> sortingAndGettingK();
     // The Destructor of the class.
     ~KnnAlgorithm();
 
@@ -43,6 +52,9 @@ private:
     vector<RelativeVector> cataloged_vectors;
     // The k neighbors we got as argument to the program.
     int k_neighbors;
+
+
+    string classificationUserVec();
 };
 
 #endif //AP1PROJECT2_KNNALGORITHM_H

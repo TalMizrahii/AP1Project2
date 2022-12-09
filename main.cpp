@@ -150,18 +150,7 @@ vector<double> insert_To_Vector() {
     return vector;
 }
 
-/**
- * The function check if the vectors we created have the same size.
- * @param v1 the vector we created from the user input.
- * @param v2 the vector we created from the user input.
- */
-void size_Comparison(const vector<double> &v1, const vector<double> &v2) {
-    // Checking if the vectors have the same size.
-    if (v1.size() != v2.size()) {
-        cout << "The vectors are not equally sized." << endl;
-        exit(-1);
-    }
-}
+
 
 /**
  * returning the distance object (on the heap) as the user specified.
