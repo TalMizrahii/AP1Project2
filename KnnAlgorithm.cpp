@@ -29,7 +29,7 @@ void KnnAlgorithm::setCataloged_vectors(vector<RelativeVector> cataloged_vectors
 
 void KnnAlgorithm::setUser_vector(vector<double> user_vector1) {
     // Set user_vector.
-    this->user_vector = std::move(user_vector1);
+     this->user_vector = std::move(user_vector1);
 }
 
 
