@@ -4,16 +4,19 @@ project(AP1Project2)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(AP1Project2
-        Distances/Minkowski.cpp
-        Distances/Minkowski.h
-        Distances/Euclidean.cpp
-        Distances/Euclidean.h
-        Distances/Taxicab.cpp
-        Distances/Taxicab.h
-        "flow and data/RelativeVector.cpp"
-        "flow and data/RelativeVector.h"
-        "flow and data/FileReader.h"
-        "flow and data/FileReader.cpp"
-        Distances/AbstractDistance.h
-        Distances/AbstractDistance.cpp
-        main.cpp Distances/Chebyshev.cpp Distances/Chebyshev.h Distances/Canberra.cpp Distances/Canberra.h)
+
+        Minkowski.cpp
+        Minkowski.h
+        Euclidean.cpp
+        Euclidean.h
+        Taxicab.cpp
+        Taxicab.h
+        RelativeVector.cpp
+        RelativeVector.h
+        FileReader.h
+        FileReader.cpp
+        KnnAlgorithm.cpp
+        KnnAlgorithm.h
+        AbstractDistance.h
+        AbstractDistance.cpp
+        main.cpp Chebyshev.cpp Chebyshev.h Canberra.cpp Canberra.h)

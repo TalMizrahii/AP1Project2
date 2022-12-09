@@ -3,12 +3,13 @@
 #include <iostream>
 #include <sstream>
 #include <cstdlib>
-#include "flow and data/FileReader.h"
-# include "Distances/Minkowski.h"
-# include "Distances/Euclidean.h"
-# include "Distances/Taxicab.h"
-# include "Distances/Canberra.h"
-# include "Distances/Chebyshev.h"
+#include "FileReader.h"
+# include "Minkowski.h"
+# include "Euclidean.h"
+# include "Taxicab.h"
+# include "Canberra.h"
+# include "Chebyshev.h"
+#include "KnnAlgorithm.h"
 
 using namespace std;
 
@@ -167,7 +168,7 @@ void size_Comparison(const vector<double> &v1, const vector<double> &v2) {
  * @param distanceSpec The user's request.
  * @return The instance of the distance.
  */
-AbstractDistance *distanceCreator(string distanceSpec) {
+AbstractDistance *distanceCreator(const string &distanceSpec) {
     // Return the Euclidean distance.
     if (distanceSpec == "AUC") {
         auto *euc = new Euclidean();
@@ -179,17 +180,17 @@ AbstractDistance *distanceCreator(string distanceSpec) {
         return man;
     }
     // Return the Chebyshev distance.
-    if (distanceSpec == "CHB"){
+    if (distanceSpec == "CHB") {
         auto *chb = new Chebyshev();
         return chb;
     }
     // Return the Canberra distance.
-    if (distanceSpec == "CAN"){
+    if (distanceSpec == "CAN") {
         auto *can = new Canberra();
         return can;
     }
     // Return the Minkowski distance.
-    if (distanceSpec == "MIN"){
+    if (distanceSpec == "MIN") {
         auto *min = new Minkowski();
         return min;
     }
@@ -206,12 +207,23 @@ int main(int args, char *argv[]) {
 
     vector<string> argc_vector = extract_argc(argv);
 
-    int k_neighbors = stoi(argc_vector[0]);
+    int kNeighbors = stoi(argc_vector[0]);
     string path = argc_vector[1];
     string distance_algorithm = argc_vector[2];
+    // Creating one vector from the user's inputs.
+    vector<double> vector1 = insert_To_Vector();
 
+
+
+
+
+    AbstractDistance *disCalc = distanceCreator(distance_algorithm);
     FileReader fileReader;
     vector<RelativeVector> catalogedVec = fileReader.readFile(path);
+    KnnAlgorithm kElement(catalogedVec, vector1, kNeighbors, disCalc);
+
+
+
 
     return 0;
 }
