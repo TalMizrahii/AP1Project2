@@ -10,6 +10,8 @@
 #include <string>
 #include "RelativeVector.h"
 #include "AbstractDistance.h"
+#include <bits/stdc++.h>
+#include <utility>
 
 using namespace std;
 
@@ -22,7 +24,7 @@ public:
     // Setter for cataloged_vectors.
     void setCataloged_vectors(vector<RelativeVector *> cataloged_vectors);
 
-    // Setter for user_vector.
+    // Setter for userVector.
     void setUserVector(vector<double> user_vector);
 
     // Setter for Calc.
@@ -31,14 +33,14 @@ public:
     // Setter for k_neighbors.
     void setKNeighbors(int k_neighbors);
 
-    // Calculate the distances between the user_vector to all cataloged vectors(classified vectors).
+    // Calculate the distances between the userVector to all cataloged vectors(classified vectors).
     void calculateDistances();
 
     // Getter for k_neighbors.
     int getKNeighbors() const;
 
-    // Getter for user_vector.
-    vector<double> getUser_vector();
+    // Getter for userVector.
+    vector<double> getUserVector();
 
     // Getter for cataloged_vectors.
     vector<RelativeVector *> getCatalogedVectors();
@@ -50,7 +52,7 @@ public:
     // Check validation of the vectors.
     void sizeComparison(const vector<double> &v1, const vector<double> &v2);
 
-    // Compares two vectors according to their distance from the user_vector.
+    // Compares two vectors according to their distance from the userVector.
 //    static bool compareRelativeVector(RelativeVector *i1, RelativeVector *i2);
 
     vector<RelativeVector *> sortingAndGettingK();
@@ -65,16 +67,13 @@ public:
 private:
     AbstractDistance *calc;
     // The user input vector.
-    vector<double> user_vector;
+    vector<double> userVector;
     // The classified vectors.
-    vector<RelativeVector *> cataloged_vectors;
+    vector<RelativeVector *> catalogedVectors;
     // The k neighbors we got as argument to the program.
-    int k_neighbors;
+    int kNeighbors;
 
 
 };
-
-
-
 
 #endif //AP1PROJECT2_KNNALGORITHM_H
