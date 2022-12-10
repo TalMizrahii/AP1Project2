@@ -207,7 +207,7 @@ int main(int args, char *argv[]) {
     FileReader fileReader;
     vector<RelativeVector*> catalogedVec = fileReader.readFile(path);
     KnnAlgorithm kElement(catalogedVec, vector1, kNeighbors, disCalc);
-    kElement.classificationUserVec();
+    cout << kElement.classificationUserVec() << endl;
 
 
     return 0;

@@ -23,6 +23,8 @@ public:
 
     RelativeVector* catchDelim(const string &toNum);
 
+    string isLastSpace(string classification);
+
 };
 
 #endif //AP1PROJECT2_FILEREADER_H
