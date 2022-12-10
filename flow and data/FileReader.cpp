@@ -73,6 +73,7 @@ RelativeVector *FileReader::catchDelim(const string &fullVector) {
     return relativeMember;
 }
 
+
 /**
  * A method given a number (as a string) checks the need to concatenate 0 to it.
  * @param toNum the number as a string.
