@@ -192,7 +192,6 @@ AbstractDistance *distanceCreator(const string &distanceSpec) {
  * @return return 0 if the program run without issues.
  */
 int main(int args, char *argv[]) {
-
     vector<string> argc_vector = extract_argc(argv);
 
     int kNeighbors = stoi(argc_vector[0]);
@@ -201,13 +200,11 @@ int main(int args, char *argv[]) {
     // Creating one vector from the user's inputs.
     vector<double> vector1 = insert_To_Vector();
 
-
     AbstractDistance *disCalc = distanceCreator(distance_algorithm);
     FileReader fileReader;
     vector<RelativeVector*> catalogedVec = fileReader.readFile(path);
     KnnAlgorithm kElement(catalogedVec, vector1, kNeighbors, disCalc);
     cout << kElement.classificationUserVec() << endl;
-
 
     return 0;
 }
