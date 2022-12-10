@@ -15,17 +15,9 @@ FileReader::FileReader() = default;
 vector<RelativeVector *> FileReader::readFile(string &path) {
     // Create a new stream to read from the file.
     fstream myFile;
-    try {
-        // Trying to open the file using the path.
-        myFile.open(path);
-        // If the file is not open, do not proceed.
-        if (!myFile.is_open()) {
-            throw; // NEED TO BE REPLACED!?
-        }
-    }
-        // Catching an error.
-    catch (...) {
-        cout << " NO FILE" << endl;
+    myFile.open(path);
+    if(!myFile){
+        cout << "NO FILE" << endl;
         exit(-1); // NEED TO BE REPLACED!?
     }
     // Declaring a vector of vectors.
@@ -68,7 +60,7 @@ RelativeVector *FileReader::catchDelim(const string &fullVector) {
         // If the data extracted from the line is not a number, it must be the specification.
         if (!isdigit(fromDelim[0])) {
             // Check if the last char is a '\r'.
-            isLastSpace(fromDelim);
+            fromDelim = isLastSpace(fromDelim);
             // Set the specification to the RelativeVector and continue.
             relativeMember->setClassification(fromDelim);
             continue;

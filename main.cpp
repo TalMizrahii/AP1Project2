@@ -1,15 +1,14 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include <sstream>
 #include <cstdlib>
-#include "FileReader.h"
-# include "Minkowski.h"
-# include "Euclidean.h"
-# include "Taxicab.h"
-# include "Canberra.h"
-# include "Chebyshev.h"
-#include "KnnAlgorithm.h"
+#include "flow and data/FileReader.h"
+# include "Distances/Minkowski.h"
+# include "Distances/Euclidean.h"
+# include "Distances/Taxicab.h"
+# include "Distances/Canberra.h"
+# include "Distances/Chebyshev.h"
+#include "flow and data/KnnAlgorithm.h"
 
 using namespace std;
 

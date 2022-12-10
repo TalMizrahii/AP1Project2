@@ -9,7 +9,7 @@
 #include <vector>
 #include <string>
 #include "RelativeVector.h"
-#include "AbstractDistance.h"
+#include "../Distances/AbstractDistance.h"
 #include <bits/stdc++.h>
 #include <utility>
 #include <map>
