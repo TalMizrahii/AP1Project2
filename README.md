@@ -18,7 +18,7 @@
 </p>
 
 ## Description
-In this program, we asked to claculate the [kNN](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) (K nearest neighbors) to a given vector.
+In this program, we asked to claculate the [KNN](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) (K nearest neighbors) to a given vector.
 
 ## Implementation
 
