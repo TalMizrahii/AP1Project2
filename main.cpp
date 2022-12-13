@@ -155,7 +155,6 @@ vector<double> insert_To_Vector() {
 }
 
 
-
 /**
  * returning the distance object (on the heap) as the user specified.
  * @param distanceSpec The user's request.
@@ -192,13 +191,35 @@ AbstractDistance *distanceCreator(const string &distanceSpec) {
     exit(-1);
 }
 
+
+/**
+ * Checking if the k received as argument to the program is in valid format.
+ * @param string k (received as argument to the program).
+ */
+void validK(const string &k) {
+    // Checking if k is starting with 0.
+    if (k[0] == '0') {
+        cout << "Illegal format" << endl;
+        exit(-1);
+    }
+    // Checking each char in the string if its in legal format.
+    for (char i: k) {
+        if (!isdigit(i)) {
+            cout << "Illegal format" << endl;
+            exit(-1);
+        }
+    }
+}
+
+
 /**
  * This is the main function of the program, creating 2 vectors and checking validation.
  * @return return 0 if the program run without issues.
  */
 int main(int args, char *argv[]) {
     vector<string> argc_vector = extract_argc(argv);
-
+    // Checking if the k argument is in valid format.
+    validK(argc_vector[0]);
     int kNeighbors = stoi(argc_vector[0]);
     string path = argc_vector[1];
     string distance_algorithm = argc_vector[2];
@@ -207,7 +228,7 @@ int main(int args, char *argv[]) {
 
     AbstractDistance *disCalc = distanceCreator(distance_algorithm);
     FileReader fileReader;
-    vector<RelativeVector*> catalogedVec = fileReader.readFile(path);
+    vector<RelativeVector *> catalogedVec = fileReader.readFile(path);
     KnnAlgorithm kElement(catalogedVec, vector1, kNeighbors, disCalc);
     cout << kElement.classificationUserVec() << endl;
 
