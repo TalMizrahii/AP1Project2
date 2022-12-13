@@ -1,4 +1,3 @@
-
 #include "Euclidean.h"
 
 
@@ -16,6 +15,6 @@ double Euclidean::calculateDistance(vector<double> v1, vector<double> v2) {
         // Calculating the subtraction between them in absolute value, raising to the power of 2 and adding to result.
         result += pow(fabs(v1[i] - v2[i]), 2);
     }
-    // Returning the result to the power of p^-1.
+    // Returning the result of the square root.
     return pow(result, 1.0 / 2);
 }

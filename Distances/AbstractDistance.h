@@ -15,8 +15,8 @@ using namespace std;
 class AbstractDistance {
 
 public:
+    // A pure virtual method for the distances.
     virtual double calculateDistance(vector<double> v1, vector<double> v2) = 0;
-
 };
 
 #endif //AP1PROJECT_DISTANCES_H

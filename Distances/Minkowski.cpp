@@ -1,9 +1,11 @@
-//
-// Created by tal on 12/8/22.
-//
-
 #include "Minkowski.h"
 
+/**
+ * Calculating the distance using minkowskiDistance function.
+ * @param v1 the first vector.
+ * @param v2 the second vector.
+ * @return the Minkowski distance between the two vectors.
+ */
 double Minkowski::calculateDistance(vector<double> v1, vector<double> v2) {
     return minkowskiDistance(v1, v2, 2);
 }

@@ -1,7 +1,3 @@
-//
-// Created by tal on 12/8/22.
-//
-
 #include "Chebyshev.h"
 
 /**

@@ -16,7 +16,7 @@ vector<RelativeVector *> FileReader::readFile(string &path) {
     // Create a new stream to read from the file.
     fstream myFile;
     myFile.open(path);
-    if(!myFile){
+    if (!myFile) {
         cout << "NO FILE" << endl;
         exit(-1); // NEED TO BE REPLACED!?
     }

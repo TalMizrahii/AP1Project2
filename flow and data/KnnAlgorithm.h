@@ -1,7 +1,3 @@
-//
-// Created by yuval on 12/7/22.
-//
-
 #ifndef AP1PROJECT2_KNNALGORITHM_H
 #define AP1PROJECT2_KNNALGORITHM_H
 
@@ -16,6 +12,9 @@
 
 using namespace std;
 
+/**
+ * Given a vector, finding the k nearest neighbors to it.
+ */
 class KnnAlgorithm {
 public:
     // The constructor of the class.
@@ -53,20 +52,24 @@ public:
     // Check validation of the vectors.
     void sizeComparison(const vector<double> &v1, const vector<double> &v2);
 
-    string extractClassification(const map<string, int>&  kMap);
+    // Extracting the largest classification from the map.
+    string extractClassification(const map<string, int> &kMap);
 
+    // Sorting the vector by distances.
     vector<RelativeVector *> sortingAndGettingK();
 
-    map<string, int> createMap(vector<RelativeVector*> knn);
+    // Creating a map from the data vector.
+    map<string, int> createMap(vector<RelativeVector *> knn);
 
     // The Destructor of the class.
     ~KnnAlgorithm();
 
+    // A control flow method for the class.
     string classificationUserVec();
 
 
-
 private:
+    // The calculation for the distance.
     AbstractDistance *calc;
     // The user input vector.
     vector<double> userVector;

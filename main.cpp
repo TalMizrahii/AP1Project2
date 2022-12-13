@@ -63,7 +63,12 @@ bool validFloatingNumber(string string1, unsigned long &i) {
     return true;
 }
 
-
+/**
+ * Extracting arguments from the system args to be the K (for the knn algorithm), the path to the file (the database)
+ * and the metric calculation.
+ * @param argcArray The sysargs array.
+ * @return A vector of those arguments.
+ */
 vector<string> extract_argc(char *argcArray[]) {
     // As we know the argc[0] is the program name, and by the format argc[1] is the k neighbors.
     string neighbors = argcArray[1];
@@ -78,7 +83,7 @@ vector<string> extract_argc(char *argcArray[]) {
             exit(0);
         }
     }
-    // Creating a string vector
+    // Creating a string vector and return it.
     vector<string> vector;
     vector.push_back(neighbors);
     vector.push_back(path);
