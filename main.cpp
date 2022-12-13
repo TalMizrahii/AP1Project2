@@ -232,5 +232,7 @@ int main(int args, char *argv[]) {
     KnnAlgorithm kElement(catalogedVec, vector1, kNeighbors, disCalc);
     cout << kElement.classificationUserVec() << endl;
 
+    delete disCalc;
+
     return 0;
 }

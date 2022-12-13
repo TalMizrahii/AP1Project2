@@ -17,6 +17,8 @@ class AbstractDistance {
 public:
     // A pure virtual method for the distances.
     virtual double calculateDistance(vector<double> v1, vector<double> v2) = 0;
+
+    virtual ~AbstractDistance();
 };
 
 #endif //AP1PROJECT_DISTANCES_H

@@ -67,6 +67,9 @@ public:
     // A control flow method for the class.
     string classificationUserVec();
 
+    // Delete all data of the catalog vector.
+    void destroyKnn();
+
 
 private:
     // The calculation for the distance.

@@ -188,6 +188,15 @@ string KnnAlgorithm::extractClassification(const map<string, int> &kMap) {
 }
 
 /**
+ * Deleting all relative vector's data.
+ */
+void KnnAlgorithm::destroyKnn() {
+    for (auto &i: catalogedVectors) {
+        delete i;
+    }
+}
+
+/**
  * A control flow function for this class calculations.
  * @return the largest classification from the KNN vectors.
  */
@@ -198,6 +207,8 @@ string KnnAlgorithm::classificationUserVec() {
     vector<RelativeVector *> nearestK = sortingAndGettingK();
     // Create a map from the knn.
     map<string, int> kMap = createMap(nearestK);
+    // Destroy the KNN vector.
+    destroyKnn();
     // Calculate the largest classification and return it.
     return extractClassification(kMap);
 }
