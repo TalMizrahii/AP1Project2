@@ -11,12 +11,12 @@ add_executable(AP1Project2
         Distances/Euclidean.h
         Distances/Taxicab.cpp
         Distances/Taxicab.h
-        "flow and data/RelativeVector.cpp"
-        "flow and data/RelativeVector.h"
-        "flow and data/FileReader.h"
-        "flow and data/FileReader.cpp"
-        "flow and data/KnnAlgorithm.cpp"
-        "flow and data/KnnAlgorithm.h"
+        "flowAndData/RelativeVector.cpp"
+        "flowAndData/RelativeVector.h"
+        "flowAndData/FileReader.h"
+        "flowAndData/FileReader.cpp"
+        "flowAndData/KnnAlgorithm.cpp"
+        "flowAndData/KnnAlgorithm.h"
         Distances/AbstractDistance.h
         Distances/AbstractDistance.cpp
         main.cpp Distances/Chebyshev.cpp Distances/Chebyshev.h Distances/Canberra.cpp Distances/Canberra.h)
