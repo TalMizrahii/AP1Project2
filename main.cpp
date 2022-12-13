@@ -2,13 +2,13 @@
 #include <string>
 #include <iostream>
 #include <cstdlib>
-#include "flow and data/FileReader.h"
+#include "flowAndData/FileReader.h"
 # include "Distances/Minkowski.h"
 # include "Distances/Euclidean.h"
 # include "Distances/Taxicab.h"
 # include "Distances/Canberra.h"
 # include "Distances/Chebyshev.h"
-#include "flow and data/KnnAlgorithm.h"
+#include "flowAndData/KnnAlgorithm.h"
 
 using namespace std;
 
