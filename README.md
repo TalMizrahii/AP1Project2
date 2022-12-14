@@ -20,6 +20,13 @@
 ## Description
 In this program, we asked to claculate the [KNN](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) (K nearest neighbors) to a given vector.
 
+We use a given data bse named "datasets", containing .cvs files. ache row in a file represent a vector of doubles. The last cell in the row represents the classification of the vector. 
+
+We created a RelativeVector class which contains the vector of doubles and the classification for each row. We calculated the KNN using hash map and returnd the resulted classification.
+
+At the begining of the program, the user needs to enter a vector wich he wants to classify. This vector has a format, and if the user doesn't follow it the program will print "Illegal format" and will shut down the program.
+
+
 ## Implementation
 
 ## Dependencies
