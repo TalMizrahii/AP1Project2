@@ -28,6 +28,10 @@ vector<RelativeVector *> FileReader::readFile(string &path) {
         string fullVector;
         // Get the line from the file and put it in the fullVector.
         getline(myFile, fullVector);
+        // Check if we detected an empty line and ignore it.
+        if(fullVector.empty()){
+            continue;
+        }
         // Send the line to be processed, and receive back a new relative vector who represent the line.
         RelativeVector *dataVec = catchDelim(fullVector);
         // Set the new relative vector in the vector of relative vectors.
@@ -53,12 +57,14 @@ RelativeVector *FileReader::catchDelim(const string &fullVector) {
     auto *relativeMember = new RelativeVector();
     // Initiate a string to store the data from toNum.
     string fromDelim;
+    // Create a validation instance.
+    Validations valid;
     // Read each data segment seperated by comma.
     while (getline(line, fromDelim, ',')) {
         // Check if the first digit of the number exist or not (.23 or 0.23).
         fromDelim = isDot(fromDelim);
         // If the data extracted from the line is not a number, it must be the specification.
-        if (!isdigit(fromDelim[0])) {
+        if (!valid.isNumber(fromDelim)) {
             // Check if the last char is a '\r'.
             fromDelim = isLastSpace(fromDelim);
             // Set the specification to the RelativeVector and continue.

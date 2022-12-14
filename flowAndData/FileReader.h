@@ -8,6 +8,7 @@
 #include <sstream>
 #include <string>
 #include "RelativeVector.h"
+#include "Validations.h"
 
 using namespace std;
 

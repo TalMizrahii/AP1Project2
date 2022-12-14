@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(AP1Project2
 
+
         Distances/Minkowski.cpp
         Distances/Minkowski.h
         Distances/Euclidean.cpp
@@ -17,6 +18,8 @@ add_executable(AP1Project2
         "flowAndData/FileReader.cpp"
         "flowAndData/KnnAlgorithm.cpp"
         "flowAndData/KnnAlgorithm.h"
+        "flowAndData/Validations.cpp"
+        "flowAndData/Validations.h"
         Distances/AbstractDistance.h
         Distances/AbstractDistance.cpp
-        main.cpp Distances/Chebyshev.cpp Distances/Chebyshev.h Distances/Canberra.cpp Distances/Canberra.h)
+        main.cpp Distances/Chebyshev.cpp Distances/Chebyshev.h Distances/Canberra.cpp Distances/Canberra.h flowAndData/Validations.cpp flowAndData/Validations.h)

@@ -91,7 +91,7 @@ AbstractDistance *KnnAlgorithm::getCalc() {
 void KnnAlgorithm::sizeComparison(const vector<double> &v1, const vector<double> &v2) {
     // Checking if the vectors have the same size.
     if (v1.size() != v2.size()) {
-        cout << "The vectors are not equally sized." << endl;
+        cout << "Illegal format1" << endl;
         exit(-1);
     }
 }
