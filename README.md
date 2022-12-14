@@ -18,13 +18,27 @@
 </p>
 
 ## Description
-In this program, we asked to claculate the [KNN](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) (K nearest neighbors) to a given vector.
+In this program, we asked to calculate the [KNN](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) (K nearest neighbors) to a given vector.
 
-We use a given data bse named "datasets", containing .cvs files. ache row in a file represent a vector of doubles. The last cell in the row represents the classification of the vector. 
+The program receives 3 arguments:
+* 1. The number K for the KNN algorithm.
+* 2. The path to the database (explained later).
+* 3. The distance calculation was wanted to be used in the KNN algorithm.
+  
+The third argument (The distance calculation) is interpreted as:
+  * MUN - [Taxicab geometry](https://en.wikipedia.org/wiki/Taxicab_geometry)
+  * AUC - [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance)
+  * CHB - [Chebyshev distance](https://en.wikipedia.org/wiki/Chebyshev_distance)
+  * CAN - [Canberra distance](https://en.wikipedia.org/wiki/Canberra_distance)
+  * MIN - [Minkowski distance](https://en.wikipedia.org/wiki/Minkowski_distance)
+  
+  
+ We use a given database named "datasets", containing .cvs files. each row in a file represents a vector of doubles. The last cell in the row represents the classification of the vector. 
 
-We created a RelativeVector class which contains the vector of doubles and the classification for each row. We calculated the KNN using hash map and returnd the resulted classification.
+We created a RelativeVector class, which contains the vector of doubles and the classification for each row. We calculated the KNN using a hash map and returned the resulting classification.
 
-At the begining of the program, the user needs to enter a vector wich he wants to classify. This vector has a format, and if the user doesn't follow it the program will print "Illegal format" and will shut down the program.
+At the beginning of the program, the user needs to enter a vector that he wants to classify. This vector has a format, and if the user doesn't follow it the program will print "Illegal format" and will shut down the program. If the program won't find the .csv file, it will print "NO FILE" and will also shut down. 
+
 
 
 ## Implementation
