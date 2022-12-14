@@ -21,6 +21,28 @@ bool Validations::validNegative(string string1, unsigned long &i) {
     return true;
 }
 
+/**
+ * Checking if the number is in scientific notation.
+ * If so, convert it to the numeric value of it represented as a string. If not, return it as it came.
+ * @param str The string to check.
+ * @return the string changed or not.
+ */
+string Validations::isScientificNotation(const string& str) {
+    // Saving the string in a temporary value.
+    string temp = str;
+    // Creating a control pointer.
+    char *end;
+    // trying to convert the string.
+    double result = strtod(str.c_str(), &end);
+    // If the string is not convertable, return the original string.
+    if (end == str.c_str() || *end != '\0') {
+        return temp;
+    }
+    // If the string is convertable, return the converted version.
+    string strResult = to_string(result);
+    return strResult;
+}
+
 
 /**
  * The function check if the input has '.' sign that the user enters is in a valid format(floating point format).
@@ -90,3 +112,5 @@ bool Validations::isNumber(string s) {
     }
     return true;
 }
+
+

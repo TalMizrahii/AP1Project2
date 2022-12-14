@@ -63,6 +63,8 @@ RelativeVector *FileReader::catchDelim(const string &fullVector) {
     while (getline(line, fromDelim, ',')) {
         // Check if the first digit of the number exist or not (.23 or 0.23).
         fromDelim = isDot(fromDelim);
+        // Checking if the number is in scientific notation.
+        fromDelim = valid.isScientificNotation(fromDelim);
         // If the data extracted from the line is not a number, it must be the specification.
         if (!valid.isNumber(fromDelim)) {
             // Check if the last char is a '\r'.
