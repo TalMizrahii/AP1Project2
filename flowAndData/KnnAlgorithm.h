@@ -48,7 +48,6 @@ public:
     // Getter for calc.
     AbstractDistance *getCalc();
 
-
     // Check validation of the vectors.
     void sizeComparison(const vector<double> &v1, const vector<double> &v2);
 
@@ -70,7 +69,6 @@ public:
     // Delete all data of the catalog vector.
     void destroyKnn();
 
-
 private:
     // The calculation for the distance.
     AbstractDistance *calc;
@@ -80,8 +78,6 @@ private:
     vector<RelativeVector *> catalogedVectors;
     // The k neighbors we got as argument to the program.
     int kNeighbors;
-
-
 };
 
 #endif //AP1PROJECT2_KNNALGORITHM_H
