@@ -134,19 +134,21 @@ int main(int args, char *argv[]) {
     vector<string> argc_vector = extract_argc(argv);
     // Checking if the k argument is in valid format.
     validK(argc_vector[0]);
-    int kNeighbors = stoi(argc_vector[0]);
+    unsigned long kNeighbors = stoi(argc_vector[0]);
     string path = argc_vector[1];
     string distance_algorithm = argc_vector[2];
-    // Creating one vector from the user's inputs.
-    vector<double> vector1 = insert_To_Vector();
 
     AbstractDistance *disCalc = distanceCreator(distance_algorithm);
     FileReader fileReader;
     vector<RelativeVector *> catalogedVec = fileReader.readFile(path);
-    KnnAlgorithm kElement(catalogedVec, vector1, kNeighbors, disCalc);
-    cout << kElement.classificationUserVec() << endl;
 
-    delete disCalc;
+    while (true) {
+        // Creating one vector from the user's inputs.
+        vector<double> vector1 = insert_To_Vector();
+        KnnAlgorithm kElement(catalogedVec, vector1, kNeighbors, disCalc);
+        cout << kElement.classificationUserVec() << endl;
+    }
+
 
     return 0;
 }

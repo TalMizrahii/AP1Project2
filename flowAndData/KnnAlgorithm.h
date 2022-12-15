@@ -9,6 +9,7 @@
 #include <bits/stdc++.h>
 #include <utility>
 #include <map>
+#include <cmath>
 
 using namespace std;
 
@@ -31,13 +32,13 @@ public:
     void seCalc(AbstractDistance *calculation1);
 
     // Setter for kNeighbors.
-    void setKNeighbors(int k_neighbors);
+    void setKNeighbors(unsigned long k_neighbors);
 
     // Calculate the distances between the userVector to all cataloged vectors(classified vectors).
     void calculateDistances();
 
     // Getter for kNeighbors.
-    int getKNeighbors() const;
+    unsigned long getKNeighbors() const;
 
     // Getter for userVector.
     vector<double> getUserVector();
@@ -77,7 +78,7 @@ private:
     // The classified vectors.
     vector<RelativeVector *> catalogedVectors;
     // The k neighbors we got as argument to the program.
-    int kNeighbors;
+    unsigned long kNeighbors;
 };
 
 #endif //AP1PROJECT2_KNNALGORITHM_H

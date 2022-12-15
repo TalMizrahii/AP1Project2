@@ -39,7 +39,7 @@ void KnnAlgorithm::setUserVector(vector<double> user_vector1) {
  * Setter for the kNeighbors.
  * @param kNeighbors The k number.
  */
-void KnnAlgorithm::setKNeighbors(int k_neighbors1) {
+void KnnAlgorithm::setKNeighbors(unsigned long k_neighbors1) {
     this->kNeighbors = k_neighbors1;
 }
 
@@ -55,7 +55,7 @@ void KnnAlgorithm::seCalc(AbstractDistance *calculation1) {
  * A getter for the k number.
  * @return the k number.
  */
-int KnnAlgorithm::getKNeighbors() const {
+unsigned long KnnAlgorithm::getKNeighbors() const {
     return this->kNeighbors;
 }
 
@@ -135,7 +135,8 @@ vector<RelativeVector *> KnnAlgorithm::sortingAndGettingK() {
     // Create a new vector.
     vector<RelativeVector *> kRelativeVectors;
     // Push to it the first k elements.
-    for (int i = 0; i < getKNeighbors(); i++) {
+    unsigned long kNum = min(getKNeighbors(), knn.size());
+    for (int i = 0; i < kNum; i++) {
         kRelativeVectors.push_back(knn[i]);
     }
     // Return the first k elements.
@@ -208,7 +209,7 @@ string KnnAlgorithm::classificationUserVec() {
     // Create a map from the knn.
     map<string, int> kMap = createMap(nearestK);
     // Destroy the KNN vector.
-    destroyKnn();
+    //    destroyKnn();
     // Calculate the largest classification and return it.
     return extractClassification(kMap);
 }
