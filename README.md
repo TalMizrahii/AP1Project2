@@ -18,9 +18,38 @@
 </p>
 
 ## Description
-In this program, we asked to claculate the [KNN](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) (K nearest neighbors) to a given vector.
+In this program, we asked to calculate the [KNN](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) (K nearest neighbors) to a given vector.
+
+The program receives 3 arguments:
+* 1. The number K for the KNN algorithm.
+* 2. The path to the database (explained later).
+* 3. The distance calculation was wanted to be used in the KNN algorithm.
+  
+The third argument (The distance calculation) is interpreted as:
+  * MUN - [Taxicab geometry](https://en.wikipedia.org/wiki/Taxicab_geometry)
+  * AUC - [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance)
+  * CHB - [Chebyshev distance](https://en.wikipedia.org/wiki/Chebyshev_distance)
+  * CAN - [Canberra distance](https://en.wikipedia.org/wiki/Canberra_distance)
+  * MIN - [Minkowski distance](https://en.wikipedia.org/wiki/Minkowski_distance)
+  
+  
+ We use a given database named "datasets", containing .cvs files. each row in a file represents a vector of doubles. The last cell in the row represents the classification of the vector. 
+
+We created a RelativeVector class, which contains the vector of doubles and the classification for each row. We calculated the KNN using a hash map and returned the resulting classification.
+
+At the beginning of the program, the user needs to enter a vector that he wants to classify. This vector has a format, and if the user doesn't follow it the program will print "Illegal format" and will shut down the program. If the program won't find the .csv file, it will print "NO FILE" and will also shut down. 
+
+
 
 ## Implementation
+  
+  The code is divided to two main attributes - Distances and ControlAndData.
+  
+  ### ControlAndData
+  The control and data directory contain the FileReader class, responsible to extract the data from the database to a vector of RelativeVector members. It uses the Validation class to make sure that all data extracted is valid and no errors occur during the extraction. It also contains the Knnalgorithm class to calculate the result.
+  
+  ### Distances
+  The distances class is composed of the 5 distance calculations mentioned above. All of those classes inherit from the AbstractDistance class, containing the "calculateDistance" method. The reason for that is to make the code compatible for change of the metric during run time.
 
 ## Dependencies
 
@@ -33,27 +62,31 @@ To clone and run this application, you'll need [Git](https://git-scm.com) instal
 
 ```bash
 # Clone this repository.
-$ git clone https://github.com/TalMizrahii/AP1Project
+$ git clone https://github.com/TalMizrahii/AP1Project2
 
 # Go into the repository.
-$ cd AP1Project
+$ cd AP1Project2
 
 # Compile using makefile.
 $ make
 ```
-
+  you can choose witch data file to run:
+  
 ```bash
-# Run the program on Linux:
-$ ./a.out
+# Run iris
+$ make run-iris
 ```
-
 ```bash
-# Run the program on Windows:
-$ a.out
+# Run wine
+$ make run-wine
 ```
-
-```bash
-# After running, clean all unnecessary files.
+  ```bash
+# Run beans
+$ make run-beans
+```
+  To clean the .exe/out file:
+  ```bash
+# clean
 $ make clean
 ```
 
