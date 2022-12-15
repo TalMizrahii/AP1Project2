@@ -55,11 +55,16 @@ vector<double> insert_To_Vector() {
     Validations validate;
     // Using a stream function to get a string from the user.
     getline(cin, input);
+    if (input.empty()){
+        cout << "Illegal format- Empty input, try again." << endl;
+        exception e;
+        throw e;
+    }
     // Checking validation for scientific notation.
     input = validate.isScientificNotationValid(input);
     // Send the string to be checked for validation.
     if (!validate.isNumber(input)) {
-        cout << "Illegal format try again!" << endl;
+        cout << "Illegal format - Try again." << endl;
         exception e;
         throw e;
     }
