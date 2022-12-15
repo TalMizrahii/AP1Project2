@@ -209,7 +209,7 @@ string KnnAlgorithm::classificationUserVec() {
     // Create a map from the knn.
     map<string, int> kMap = createMap(nearestK);
     // Destroy the KNN vector.
-    //    destroyKnn();
+    // destroyKnn();
     // Calculate the largest classification and return it.
     return extractClassification(kMap);
 }
