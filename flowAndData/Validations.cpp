@@ -113,7 +113,11 @@ bool Validations::isNumber(string s) {
     return true;
 }
 
-
+/**
+ * Checking a full string for scientific notation.
+ * @param str The string to check.
+ * @return The string repaired.
+ */
 string Validations::isScientificNotationValid(const string str) {
     // Create a new stream to go over the line.
     istringstream line(str);
