@@ -10,7 +10,7 @@ KnnAlgorithm::~KnnAlgorithm() = default;
  */
 KnnAlgorithm::KnnAlgorithm(vector<RelativeVector *> cataloged_vectors1,
                            vector<double> user_vector1,
-                           int k_neighbors1,
+                           unsigned long k_neighbors1,
                            AbstractDistance *calculation) {
     // Calling the setters.
     seCalc(calculation);
@@ -91,8 +91,9 @@ AbstractDistance *KnnAlgorithm::getCalc() {
 void KnnAlgorithm::sizeComparison(const vector<double> &v1, const vector<double> &v2) {
     // Checking if the vectors have the same size.
     if (v1.size() != v2.size()) {
-        cout << "Illegal format" << endl;
-        exit(-1);
+        cout << "Illegal format - Vector not equally sized." << endl;
+        exception e;
+        throw e;
     }
 }
 

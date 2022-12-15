@@ -55,10 +55,13 @@ vector<double> insert_To_Vector() {
     Validations validate;
     // Using a stream function to get a string from the user.
     getline(cin, input);
+    // Checking validation for scientific notation.
+    input = validate.isScientificNotationValid(input);
     // Send the string to be checked for validation.
     if (!validate.isNumber(input)) {
-        cout << "Illegal format" << endl;
-        exit(-1);
+        cout << "Illegal format try again!" << endl;
+        exception e;
+        throw e;
     }
     // Creating a vector from the user input string.
     istringstream vectorStream(input);
@@ -143,12 +146,17 @@ int main(int args, char *argv[]) {
     vector<RelativeVector *> catalogedVec = fileReader.readFile(path);
 
     while (true) {
+        vector<double> vector1;
         // Creating one vector from the user's inputs.
-        vector<double> vector1 = insert_To_Vector();
-        KnnAlgorithm kElement(catalogedVec, vector1, kNeighbors, disCalc);
-        cout << kElement.classificationUserVec() << endl;
+        try {
+            vector1 = insert_To_Vector();
+            KnnAlgorithm kElement(catalogedVec, vector1, kNeighbors, disCalc);
+            cout << kElement.classificationUserVec() << endl;
+        }
+        catch (exception &e) {
+            continue;
+        }
     }
-
 
     return 0;
 }

@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 #include <cstdlib>
+#include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -18,6 +20,10 @@ public:
 
     // Checking if a number is in scientific notation.
     string isScientificNotation(const basic_string<char>& str);
+
+    // Check validation.
+    string isScientificNotationValid(string str);
+
 
 protected:
     // Checking if the number is a valid floating point number.

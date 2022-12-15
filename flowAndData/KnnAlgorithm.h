@@ -20,7 +20,7 @@ class KnnAlgorithm {
 public:
     // The constructor of the class.
     explicit KnnAlgorithm(vector<RelativeVector *> cataloged_vectors, vector<double> user_vector,
-                          int k_neighbors, AbstractDistance *calculation);
+                          unsigned long k_neighbors, AbstractDistance *calculation);
 
     // Setter for catalogedVectors.
     void setCataloged_vectors(vector<RelativeVector *> cataloged_vectors);

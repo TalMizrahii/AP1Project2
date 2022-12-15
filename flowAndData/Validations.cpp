@@ -27,7 +27,7 @@ bool Validations::validNegative(string string1, unsigned long &i) {
  * @param str The string to check.
  * @return the string changed or not.
  */
-string Validations::isScientificNotation(const string& str) {
+string Validations::isScientificNotation(const string &str) {
     // Saving the string in a temporary value.
     string temp = str;
     // Creating a control pointer.
@@ -114,3 +114,18 @@ bool Validations::isNumber(string s) {
 }
 
 
+string Validations::isScientificNotationValid(const string str) {
+    // Create a new stream to go over the line.
+    istringstream line(str);
+    // Initiate a string to store the data from toNum.
+    string lastStr, result;
+    // Create a validation instance.
+    Validations valid;
+    // Read each data segment seperated by comma.
+    while (getline(line, lastStr, ' ')) {
+        // Checking if the number is in scientific notation.
+        result = result + valid.isScientificNotation(lastStr) + " ";
+    }
+    result.pop_back();
+    return result;
+}
