@@ -18,6 +18,9 @@
 </p>
 
 ## Description
+
+*The final project seats in the "main" branch!*
+
 In this program, we asked to calculate the [KNN](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) (K nearest neighbors) to a given vector.
 
 The program receives 3 arguments:
