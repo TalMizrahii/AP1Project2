@@ -49,7 +49,7 @@ At the beginning of the program, the user needs to enter a vector that he wants 
   The code is divided to two main attributes - Distances and ControlAndData.
   
   ### ControlAndData
-  The control and data directory contain the FileReader class, responsible to extract the data from the database to a vector of RelativeVector members. It uses the Validation class to make sure that all data extracted is valid and no errors occur during the extraction. It also contains the Knnalgorithm class to calculate the result.
+  The control and data directory contain the FileReader class, responsible to extract the data from the database to a vector of RelativeVector members. It uses the Validation class to make sure that all data extracted is valid and no errors occur during the extraction. It also contains the Knnalgorithm class to calculate the result using hash map for better preformance.
   
   ### Distances
   The distances class is composed of the 5 distance calculations mentioned above. All of those classes inherit from the AbstractDistance class, containing the "calculateDistance" method. The reason for that is to make the code compatible for change of the metric during run time.
