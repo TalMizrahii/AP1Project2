@@ -73,7 +73,7 @@ $ cd AP1Project2
 # Compile using makefile.
 $ make
 ```
-  you can choose witch data file to run:
+  you can choose which data file to run:
   
 ```bash
 # Run iris
